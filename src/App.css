@@ -1,12 +1,19 @@
 :root {
-  --ink: #1f2421;
-  --paper: #faf7f0;
-  --shelf: #7a4b2b;
-  --shelf-dark: #5a3620;
-  --accent: #2e6f5e;
-  --accent-light: #e4efe9;
-  --card-shadow: 0 2px 8px rgba(31, 36, 33, 0.08);
+  --ink: #e7e9ee;
+  --ink-muted: #9aa1ad;
+  --paper: #14161c;
+  --surface: #1b1e26;
+  --surface-alt: #232732;
+  --navbar: #1e4fa3;
+  --navbar-dark: #123069;
+  --accent: #4c8dff;
+  --accent-light: #1c2a44;
+  --border: rgba(231, 233, 238, 0.08);
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
+
+/* Undo the Vite starter template's #root centering/padding/max-width
+   so the app fills the full viewport instead of sitting in a boxed column. */
 #root {
   max-width: none;
   width: 100%;
@@ -21,6 +28,7 @@ body {
   padding: 0;
   width: 100%;
 }
+
 body {
   background: var(--paper);
   color: var(--ink);
@@ -32,39 +40,63 @@ body {
 }
 
 .navbar-books {
-  background: linear-gradient(180deg, var(--shelf) 0%, var(--shelf-dark) 100%);
+  background: linear-gradient(180deg, var(--navbar) 0%, var(--navbar-dark) 100%);
 }
 
 .navbar-books .navbar-brand {
   font-family: "Bitter", serif;
   font-weight: 800;
   letter-spacing: 0.02em;
-  color: #fdf6e9 !important;
+  color: #f4f7ff !important;
+}
+
+.navbar-books button.navbar-brand:hover,
+.navbar-books button.navbar-brand:focus {
+  color: #f4f7ff;
+  opacity: 0.85;
 }
 
 .search-panel {
-  background: #fff;
-  border: 1px solid rgba(122, 75, 43, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 0.75rem;
   box-shadow: var(--card-shadow);
+}
+
+.search-panel .form-control {
+  background: var(--surface-alt);
+  border-color: var(--border);
+  color: var(--ink);
+}
+
+.search-panel .form-control:focus {
+  background: var(--surface-alt);
+  border-color: var(--accent);
+  color: var(--ink);
+  box-shadow: 0 0 0 0.2rem rgba(76, 141, 255, 0.25);
+}
+
+.search-panel .form-control::placeholder {
+  color: var(--ink-muted);
 }
 
 .btn-accent {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #0b1220;
+  font-weight: 600;
 }
 
 .btn-accent:hover {
-  background: #245a4c;
-  border-color: #245a4c;
-  color: #fff;
+  background: #6ba1ff;
+  border-color: #6ba1ff;
+  color: #0b1220;
 }
 
 .book-card {
-  border: 1px solid rgba(31, 36, 33, 0.08);
+  border: 1px solid var(--border);
   border-radius: 0.6rem;
-  background: #fff;
+  background: var(--surface);
   box-shadow: var(--card-shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
@@ -73,7 +105,7 @@ body {
 
 .book-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(31, 36, 33, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .book-cover {
@@ -81,7 +113,7 @@ body {
   height: 230px;
   object-fit: cover;
   border-radius: 0.6rem 0.6rem 0 0;
-  background: #eee;
+  background: var(--surface-alt);
 }
 
 .book-cover-placeholder {
@@ -104,6 +136,7 @@ body {
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.25;
+  color: var(--ink);
 }
 
 .badge-subject {
@@ -112,10 +145,15 @@ body {
   font-weight: 500;
 }
 
+.text-muted {
+  color: var(--ink-muted) !important;
+}
+
 .empty-state,
 .error-state {
   padding: 3rem 1rem;
   text-align: center;
+  color: var(--ink-muted);
 }
 
 .eyebrow {
@@ -124,4 +162,36 @@ body {
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--accent);
+}
+
+/* Bootstrap's modal (used directly in BookDetailsModal.jsx) defaults to a
+   white surface — override it here so book details stay dark-themed too. */
+.modal-content {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--border);
+}
+
+.btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.btn-outline-secondary {
+  color: var(--ink-muted);
+  border-color: var(--border);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--surface-alt);
+  color: var(--ink);
+  border-color: var(--ink-muted);
+}
+
+footer.border-top {
+  border-color: var(--border) !important;
 }

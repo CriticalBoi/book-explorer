@@ -42,5 +42,13 @@ export function useBookSearch() {
       });
   }, [searchTerm]);
 
-  return { books, status, errorMsg, search: setSearchTerm, searchTerm };
+  const reset = () => {
+    requestId.current++; // invalidate any in-flight request so it can't overwrite the reset
+    setSearchTerm("");
+    setBooks([]);
+    setStatus("idle");
+    setErrorMsg("");
+  };
+
+  return { books, status, errorMsg, search: setSearchTerm, searchTerm, reset };
 }

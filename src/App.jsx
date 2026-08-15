@@ -7,20 +7,33 @@ import { useBookSearch } from "./hooks/useBookSearch";
 import "./App.css";
 
 export default function App() {
-  const { books, status, errorMsg, search, searchTerm } = useBookSearch();
+  const { books, status, errorMsg, search, searchTerm, reset } = useBookSearch();
   const [selectedBook, setSelectedBook] = useState(null);
+  const [searchBarKey, setSearchBarKey] = useState(0);
+
+  const handleGoHome = () => {
+    reset();
+    setSelectedBook(null);
+    setSearchBarKey((k) => k + 1); // remounts SearchBar so its typed text clears too
+  };
 
   return (
     <div className="min-vh-100 d-flex flex-column">
       <nav className="navbar navbar-books py-3 mb-4">
         <div className="container-fluid px-3 px-md-5 d-flex justify-content-between align-items-center flex-wrap">
-          <span className="navbar-brand fs-3 mb-0">📚 Book Finder</span>
+          <button
+            type="button"
+            className="navbar-brand fs-3 mb-0 btn btn-link p-0 text-decoration-none"
+            onClick={handleGoHome}
+          >
+            📚 Book Finder
+          </button>
           <span className="text-white-50 small d-none d-sm-inline">Powered by Open Library</span>
         </div>
       </nav>
 
       <div className="container flex-grow-1 pb-5">
-        <SearchBar onSearch={search} disabled={status === "loading"} />
+        <SearchBar key={searchBarKey} onSearch={search} disabled={status === "loading"} />
 
         {status !== "done" && (
           <SearchStatus status={status} searchTerm={searchTerm} errorMsg={errorMsg} />
