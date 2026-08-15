@@ -1,0 +1,127 @@
+:root {
+  --ink: #1f2421;
+  --paper: #faf7f0;
+  --shelf: #7a4b2b;
+  --shelf-dark: #5a3620;
+  --accent: #2e6f5e;
+  --accent-light: #e4efe9;
+  --card-shadow: 0 2px 8px rgba(31, 36, 33, 0.08);
+}
+#root {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+}
+
+.display-font {
+  font-family: "Bitter", serif;
+}
+
+.navbar-books {
+  background: linear-gradient(180deg, var(--shelf) 0%, var(--shelf-dark) 100%);
+}
+
+.navbar-books .navbar-brand {
+  font-family: "Bitter", serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fdf6e9 !important;
+}
+
+.search-panel {
+  background: #fff;
+  border: 1px solid rgba(122, 75, 43, 0.15);
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+}
+
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background: #245a4c;
+  border-color: #245a4c;
+  color: #fff;
+}
+
+.book-card {
+  border: 1px solid rgba(31, 36, 33, 0.08);
+  border-radius: 0.6rem;
+  background: #fff;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(31, 36, 33, 0.14);
+}
+
+.book-cover {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 0.6rem 0.6rem 0 0;
+  background: #eee;
+}
+
+.book-cover-placeholder {
+  width: 100%;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-family: "Bitter", serif;
+  font-weight: 700;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.6rem 0.6rem 0 0;
+}
+
+.book-title {
+  font-family: "Bitter", serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.badge-subject {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.empty-state,
+.error-state {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+}
