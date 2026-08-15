@@ -26,7 +26,7 @@ export default function App() {
             className="navbar-brand fs-3 mb-0 btn btn-link p-0 text-decoration-none"
             onClick={handleGoHome}
           >
-            📚 Book Finder
+            📚 Book Explorer
           </button>
           <span className="text-white-50 small d-none d-sm-inline">Powered by Open Library</span>
         </div>
